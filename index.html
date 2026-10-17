@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 6 - Usar la página con el teclado | ejemplo-6-teclado</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #F5F5F5; color: #1F1F1F; margin: 0; padding: 20px; }
+    .comparar { display: flex; flex-wrap: wrap; gap: 20px; }
+    .tarjeta { background: white; border-radius: 10px; padding: 16px; width: 320px; }
+    .mal { border-top: 8px solid #B3261E; }
+    .bien { border-top: 8px solid #2E7D32; }
+    .contador { font-size: 20px; font-weight: bold; }
+    .falso-boton, button { display: inline-block; font-size: 18px; padding: 12px 20px; background: #0F4C81; color: #FFFFFF; border: 0; border-radius: 6px; cursor: pointer; }
+    .mal *:focus { outline: none; }
+    .bien button:focus-visible { outline: 4px solid #F4B400; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <p><small>Carpeta: ejemplo-6-teclado</small></p>
+  <h1>Ejemplo 6: usar la página con el teclado</h1>
+  <p>Deja el ratón. Pulsa <b>Tab</b> para moverte y <b>Enter</b> para activar.</p>
+  <div class="comparar">
+    <div class="tarjeta mal">
+      <h2>Así NO</h2>
+      <div class="falso-boton" id="boton-mal">Sumar 1</div>
+      <p class="contador">Contador: <span id="cuenta-mal">0</span></p>
+    </div>
+    <div class="tarjeta bien">
+      <h2>Así SÍ</h2>
+      <button id="boton-bien">Sumar 1</button>
+      <p class="contador">Contador: <span id="cuenta-bien">0</span></p>
+    </div>
+  </div>
+  <p>Con Tab el foco salta al botón verde, que muestra un borde naranja; dos pulsaciones de Enter suben su contador a 2. El botón rojo solo funciona con el ratón.</p>
+  <script>
+    function sumarUno(idCaja) {
+      var caja = document.getElementById(idCaja);
+      caja.textContent = Number(caja.textContent) + 1;
+    }
+    document.getElementById('boton-mal').addEventListener('click', function () {
+      sumarUno('cuenta-mal');
+    });
+    document.getElementById('boton-bien').addEventListener('click', function () {
+      sumarUno('cuenta-bien');
+    });
+  </script>
+</body>
+</html>
